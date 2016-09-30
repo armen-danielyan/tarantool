@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>proEO | Input Price Simulation</title>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery-ui-1.9.1.custom.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/licensedCharts/FusionCharts_XT/Charts/FusionCharts.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Cuprum:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/smoothness/jquery-ui-1.9.1.custom.css" type="text/css" />
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css" type="text/css" media="screen" />
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $( "#sidebar_menu" ).accordion({
+        heightStyle: "content",
+        collapsible: false,
+        active: 3
+    });
+    $( "#filter_menu" ).accordion({
+        heightStyle: "content",
+        collapsible: false
+    });
+    
+    $( document ).tooltip({
+        track: true
+    });
+    
+});
+
+function tshowhide()
+{
+	if(document.getElementById("tsidebar").style.display == "none"){
+		document.getElementById("tsidebar").style.display = "";
+		document.getElementById("tsidebarf").style.display = "";
+		document.getElementById("togme").src = "<?php echo base_url(); ?>assets/images/bar1.png";
+	} else {
+		document.getElementById("tsidebar").style.display = "none";
+		document.getElementById("tsidebarf").style.display = "none";
+		document.getElementById("togme").src = "<?php echo base_url(); ?>assets/images/bar2.png";
+	}
+}
+
+</script>
+</head>
+
+<body>
+<table class="content_block" cellpadding="0" cellspacing="0">
+    <tr>
+        <td id="tsidebar">
+            <div class="aibanner">
+				<?php $this->load->view("logo_view"); ?>
+			</div>
+            <div id="sidebar_menu">
+                <?php $this->load->view("accordion_view"); ?>
+                
+            </div>
+            
+        </td>
+        <td class="tborder" onclick="tshowhide();" rowspan="2" title="Click to show/hide side panel.">
+            <img id="togme" src="<?php echo base_url(); ?>assets/images/bar1.png" />
+        </td>
+        <td class="tcontent" rowspan="2">
+            <?php
+			$breadcrumb = anchor('dashboard', 'Dashboard', array('title' => 'Go to Dashboard Home'))." > <span class='orange'>Input Price Simulation</span>";
+			$this->load->view("header", array("breadcrumb" => $breadcrumb)); 
+			?>
+            <div class="content_div">
+            	<form id="form2" name="form2" method="post" action="<?php echo site_url('input_price_simulation'); ?>">
+            	
+            	<table class="avtable_2" style="border:solid 1px red;">
+            		<tr>
+            			<td class="thead" >From: Month/Year</td>
+            			<td class="thead" >To: Month/Year</td>
+            			<td class="thead" >Simulation Version (Select One)</td>
+            			<td class="thead" >New Input Prices</td>
+            		</tr>
+            		<tr >
+            			
+            			<td >
+            				<select name="monthf" title="Select Month">
+                            <?php
+                                foreach($form_months as $row)
+                                {
+                                    $depth = '';
+                                    //for($i=0; $i<$row['depth']; $i++)
+                                    //{
+                                        //$depth .= '&nbsp;&nbsp;';
+                                    //}
+                            ?>  
+                                <option value="<?php echo $row['element']; ?>" <?php if($month == $row['element']){ $n_month = $row['name_element']; ?>selected="selected"<?php } ?> ><?php echo $depth.$row['name_element']; ?></option>
+                            <?php   
+                                }
+                            ?>
+                            </select>
+                            <select name="yearf" title="Select Year">
+                            <?php
+                                foreach($form_year as $row)
+                                {
+                                    $depth = '';
+                                    //for($i=0; $i<$row['depth']; $i++)
+                                    //{
+                                        //$depth .= '&nbsp;&nbsp;';
+                                    //}
+                            ?>  
+                                <option value="<?php echo $row['element']; ?>" <?php if($year == $row['element']){ $n_year = $row['name_element']; ?>selected="selected"<?php } ?> ><?php echo $depth.$row['name_element']; ?></option>
+                            <?php   
+                                }
+                            ?>
+                            </select>
+            			</td>
+            			<td >
+            				<select name="montht" title="Select Month">
+                            <?php
+                                foreach($form_months as $row)
+                                {
+                                    $depth = '';
+                                    //for($i=0; $i<$row['depth']; $i++)
+                                    //{
+                                        //$depth .= '&nbsp;&nbsp;';
+                                    //}
+                            ?>  
+                                <option value="<?php echo $row['element']; ?>" <?php if($month == $row['element']){ $n_month = $row['name_element']; ?>selected="selected"<?php } ?> ><?php echo $depth.$row['name_element']; ?></option>
+                            <?php   
+                                }
+                            ?>
+                            </select>
+                            <select name="yeart" title="Select Year">
+                            <?php
+                                foreach($form_year as $row)
+                                {
+                                    $depth = '';
+                                    //for($i=0; $i<$row['depth']; $i++)
+                                    //{
+                                        //$depth .= '&nbsp;&nbsp;';
+                                    //}
+                            ?>  
+                                <option value="<?php echo $row['element']; ?>" <?php if($year == $row['element']){ $n_year = $row['name_element']; ?>selected="selected"<?php } ?> ><?php echo $depth.$row['name_element']; ?></option>
+                            <?php   
+                                }
+                            ?>
+            			</td>
+            			<td style="text-align: left !important;">
+            				<?php
+            					foreach($form_version as $row)
+            					{
+            				?>
+            					<input type="radio" name="version" value="<?php echo $row['element']; ?>"> <?php echo $row['name_element'] ?> <br />
+            				<?php		
+            					}
+            				?>
+            				
+            			</td>
+            			<td style="text-align: left !important;">
+            				<input name="var1" type="text" id="var1" value="0.00" style="width: 75px !important;" /> Electricity/KwH <br />
+            				<input name="var2" type="text" id="var2" value="0.00" style="width: 75px !important;" /> Labor/Hr
+            			</td>
+            		</tr>
+            		<tr>
+            			<td colspan="4" style="text-align: center !important;">
+            				<input name="Next" type="submit" id="bf" value="Next" class="obutton1" />
+            			</td>
+            		</tr>
+            	</table>
+               
+               </form>
+            </div>
+            
+            <div class="content_div">
+            	<table class="avtable_2">
+            		<tr>
+            			<td  >&nbsp;</td>
+            			<td class="thead" >Plan</td>
+            			<td class="thead" >Simulated</td>
+            			<td class="thead" >Var</td>
+            			
+            		</tr>
+            		<tr>
+            			<td class="label" >Least Affected Products</td>
+            			<td  >&nbsp;</td>
+            			<td  >&nbsp;</td>
+            			<td  >&nbsp;</td>
+            		</tr>
+            		<tr>
+            			<td class="label" >SKU9000203</td>
+            			<td  >123</td>
+            			<td  >456</td>
+            			<td  >789</td>
+            		</tr>
+            		<tr>
+            			<td class="label" >Most Affected Products</td>
+            			<td  >&nbsp;</td>
+            			<td  >&nbsp;</td>
+            			<td  >&nbsp;</td>
+            		</tr>
+            		<tr>
+            			<td class="label" >SKU9000678</td>
+            			<td  >123</td>
+            			<td  >456</td>
+            			<td  >789</td>
+            		</tr>
+            	</table>
+            </div>
+            
+        </td>
+    </tr>
+    <tr>
+        <td id="tsidebarf" class="valignbot"><?php $this->load->view("footer"); ?></td>
+    </tr>
+</table>
+
+<?php
+	if(isset($_GET['trace']) && $_GET['trace'] == TRUE){
+		echo "<pre>";
+		echo $this->session->userdata('CurlRequest');
+		$this->session->unset_userdata('CurlRequest');
+		echo "</pre>";
+	} else {
+		$this->session->unset_userdata('CurlRequest');
+	}
+?>
+<div id="dialog-message" title="Chart Pinned" style="display: none;">
+	<p>
+		<span class="ui-icon ui-icon-circle-check" style="float: left; margin: 0 7px 50px 0;"></span>
+		<span id="pnchart"></span> now pinned to your dashboard.
+	</p>
+</div>
+</body>
+</html>

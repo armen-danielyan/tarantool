@@ -1,0 +1,165 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "4d8e6c39d9991291aa9548d7ae4741ea",
+    "content-hash": "2ad0149b4e56534bf91c70a7ac95361d",
+    "packages": [
+        {
+            "name": "numphp/numphp",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/NumPHP/NumPHP.git",
+                "reference": "f329edfb3c50b5f12d889cad0e9257d7a9d15447"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/NumPHP/NumPHP/zipball/f329edfb3c50b5f12d889cad0e9257d7a9d15447",
+                "reference": "f329edfb3c50b5f12d889cad0e9257d7a9d15447",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpmd/phpmd": "*",
+                "phpunit/phpunit": "*",
+                "satooshi/php-coveralls": "v1.0.1",
+                "sebastian/phpcpd": "*",
+                "squizlabs/php_codesniffer": "*",
+                "symfony/console": "~2.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "NumPHP\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gordon Lesti",
+                    "email": "info@gordonlesti.com",
+                    "homepage": "http://gordonlesti.com/",
+                    "role": "developer"
+                }
+            ],
+            "description": "Mathematical PHP library for scientific computing",
+            "homepage": "http://numphp.org/",
+            "keywords": [
+                "linalg",
+                "matrix",
+                "numeric"
+            ],
+            "time": "2016-02-18 08:04:29"
+        },
+        {
+            "name": "rybakit/msgpack",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rybakit/msgpack.php.git",
+                "reference": "7ae17f9936ccc13285feaab67ad13c6cb2d516d8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rybakit/msgpack.php/zipball/7ae17f9936ccc13285feaab67ad13c6cb2d516d8",
+                "reference": "7ae17f9936ccc13285feaab67ad13c6cb2d516d8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MessagePack\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eugene Leonovich",
+                    "email": "gen.work@gmail.com"
+                }
+            ],
+            "description": "A pure PHP implementation of the MessagePack serialization format.",
+            "keywords": [
+                "messagepack",
+                "msgpack",
+                "pure",
+                "streaming"
+            ],
+            "time": "2015-12-22 09:46:41"
+        },
+        {
+            "name": "tarantool/client",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tarantool-php/client.git",
+                "reference": "f449d35eff28f5816e6529e90770dec05f666c7e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tarantool-php/client/zipball/f449d35eff28f5816e6529e90770dec05f666c7e",
+                "reference": "f449d35eff28f5816e6529e90770dec05f666c7e",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.4|^7.0"
+            },
+            "require-dev": {
+                "ext-msgpack": "@dev",
+                "rybakit/msgpack": "@dev"
+            },
+            "suggest": {
+                "ext-msgpack": "For using Pecl- or PeclLitePacker.",
+                "rybakit/msgpack": "For using PurePacker."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tarantool\\Client\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eugene Leonovich",
+                    "email": "gen.work@gmail.com"
+                }
+            ],
+            "description": "PHP client for Tarantool.",
+            "keywords": [
+                "client",
+                "nosql",
+                "pure",
+                "tarantool"
+            ],
+            "time": "2016-07-28 07:15:36"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "tarantool/client": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

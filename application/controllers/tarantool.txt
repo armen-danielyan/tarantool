@@ -1,0 +1,293 @@
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+require APPPATH . 'third_party/parsecsv/parsecsv.lib.php';
+
+class Tarantool extends CI_Controller {
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->helper(array('form', 'url'));
+    }
+
+    public function index()
+    {
+        $this->load->model('tarantool_model');
+
+        $data['header'] = $this->tarantool_model->test();
+        $data['title'] = 'Under Construction';
+
+        if($_POST['submit_add']){
+            if($_POST['mat_name'] || $_POST['mat_1'] || $_POST['mat_2'] || $_POST['mat_3'] || $_POST['mat_4'] || $_POST['mat_5'] || $_POST['mat_6'] || $_POST['mat_7'] || $_POST['mat_8'] || $_POST['mat_9'] || $_POST['mat_10'] || $_POST['mat_11'] || $_POST['mat_12']){
+                $this->tarantool_model->insert();
+            }
+        }
+
+        $this->load->view('tarantool', $data);
+    }
+
+    public function do_upload()
+    {
+        $data['title'] = 'Under Construction';
+
+        $config = array(
+            'upload_path' => APPPATH . 'uploads/',
+            'allowed_types' => 'csv',
+            'overwrite' => TRUE,
+            'max_size' => '2048',
+            'max_width' => '1024',
+            'max_height' => '768'
+        );
+
+        $this->load->library('upload', $config);
+        if ( !$this->upload->do_upload('upload_loadsheet') ) {
+            $data['error'] = $this->upload->display_errors();
+            $this->load->view('tarantool_upload', $data);
+        } else {
+
+
+            $fileInfo = $this->upload->data();
+            $fileFullPath = $fileInfo['full_path'];
+
+            $csv = new parseCSV($fileFullPath);
+
+            $data['upload_data'] = $csv->data;
+            $this->load->view('tarantool_upload', $data);
+        }
+
+
+
+    }
+
+    /*public function readcsv()
+    {
+        $this->load->model('tarantool_model');
+        $this->load->library('csvreader');
+
+        $data['header'] = $this->tarantool_model->test();
+        $data['title'] = 'Under Construction';
+        //$data['csvdata'] = $this->csvreader->parse_file('Test.csv');
+        $data['csvdata'] = "Hello";
+
+        $this->load->view('tarantool', $data);
+    }*/
+
+}
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+require APPPATH . 'third_party/parsecsv/parsecsv.lib.php';
+
+class Tarantool extends CI_Controller {
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->helper(array('form', 'url'));
+    }
+
+    public function index()
+    {
+        $this->load->model('tarantool_model');
+
+        $data['header'] = $this->tarantool_model->test();
+        $data['title'] = 'Under Construction';
+
+        if($_POST['submit_add']){
+            if($_POST['mat_name'] || $_POST['mat_1'] || $_POST['mat_2'] || $_POST['mat_3'] || $_POST['mat_4'] || $_POST['mat_5'] || $_POST['mat_6'] || $_POST['mat_7'] || $_POST['mat_8'] || $_POST['mat_9'] || $_POST['mat_10'] || $_POST['mat_11'] || $_POST['mat_12']){
+                $this->tarantool_model->insert();
+            }
+        }
+
+        $this->load->view('tarantool', $data);
+    }
+
+    public function do_upload()
+    {
+        $data['title'] = 'Under Construction';
+
+        $config = array(
+            'upload_path' => APPPATH . 'uploads/',
+            'allowed_types' => 'csv',
+            'overwrite' => TRUE,
+            'max_size' => '2048',
+            'max_width' => '1024',
+            'max_height' => '768'
+        );
+
+        $this->load->library('upload', $config);
+        if ( !$this->upload->do_upload('upload_loadsheet') ) {
+            $data['error'] = $this->upload->display_errors();
+            $this->load->view('tarantool_upload', $data);
+        } else {
+
+
+            $fileInfo = $this->upload->data();
+            $fileFullPath = $fileInfo['full_path'];
+
+            $csv = new parseCSV($fileFullPath);
+
+            $data['upload_data'] = $csv->data;
+            $this->load->view('tarantool_upload', $data);
+        }
+
+
+
+    }
+
+    /*public function readcsv()
+    {
+        $this->load->model('tarantool_model');
+        $this->load->library('csvreader');
+
+        $data['header'] = $this->tarantool_model->test();
+        $data['title'] = 'Under Construction';
+        //$data['csvdata'] = $this->csvreader->parse_file('Test.csv');
+        $data['csvdata'] = "Hello";
+
+        $this->load->view('tarantool', $data);
+    }*/
+
+}
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+require APPPATH . 'third_party/parsecsv/parsecsv.lib.php';
+
+class Tarantool extends CI_Controller {
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->helper(array('form', 'url'));
+    }
+
+    public function index()
+    {
+        $this->load->model('tarantool_model');
+
+        $data['header'] = $this->tarantool_model->test();
+        $data['title'] = 'Under Construction';
+
+        if($_POST['submit_add']){
+            if($_POST['mat_name'] || $_POST['mat_1'] || $_POST['mat_2'] || $_POST['mat_3'] || $_POST['mat_4'] || $_POST['mat_5'] || $_POST['mat_6'] || $_POST['mat_7'] || $_POST['mat_8'] || $_POST['mat_9'] || $_POST['mat_10'] || $_POST['mat_11'] || $_POST['mat_12']){
+                $this->tarantool_model->insert();
+            }
+        }
+
+        $this->load->view('tarantool', $data);
+    }
+
+    public function do_upload()
+    {
+        $data['title'] = 'Under Construction';
+
+        $config = array(
+            'upload_path' => APPPATH . 'uploads/',
+            'allowed_types' => 'csv',
+            'overwrite' => TRUE,
+            'max_size' => '2048',
+            'max_width' => '1024',
+            'max_height' => '768'
+        );
+
+        $this->load->library('upload', $config);
+        if ( !$this->upload->do_upload('upload_loadsheet') ) {
+            $data['error'] = $this->upload->display_errors();
+            $this->load->view('tarantool_upload', $data);
+        } else {
+
+
+            $fileInfo = $this->upload->data();
+            $fileFullPath = $fileInfo['full_path'];
+
+            $csv = new parseCSV($fileFullPath);
+
+            $data['upload_data'] = $csv->data;
+            $this->load->view('tarantool_upload', $data);
+        }
+
+
+
+    }
+
+    /*public function readcsv()
+    {
+        $this->load->model('tarantool_model');
+        $this->load->library('csvreader');
+
+        $data['header'] = $this->tarantool_model->test();
+        $data['title'] = 'Under Construction';
+        //$data['csvdata'] = $this->csvreader->parse_file('Test.csv');
+        $data['csvdata'] = "Hello";
+
+        $this->load->view('tarantool', $data);
+    }*/
+
+}
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+require APPPATH . 'third_party/parsecsv/parsecsv.lib.php';
+
+class Tarantool extends CI_Controller {
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->helper(array('form', 'url'));
+    }
+
+    public function index()
+    {
+        $this->load->model('tarantool_model');
+
+        $data['header'] = $this->tarantool_model->test();
+        $data['title'] = 'Under Construction';
+
+        if($_POST['submit_add']){
+            if($_POST['mat_name'] || $_POST['mat_1'] || $_POST['mat_2'] || $_POST['mat_3'] || $_POST['mat_4'] || $_POST['mat_5'] || $_POST['mat_6'] || $_POST['mat_7'] || $_POST['mat_8'] || $_POST['mat_9'] || $_POST['mat_10'] || $_POST['mat_11'] || $_POST['mat_12']){
+                $this->tarantool_model->insert();
+            }
+        }
+
+        $this->load->view('tarantool', $data);
+    }
+
+    public function do_upload()
+    {
+        $data['title'] = 'Under Construction';
+
+        $config = array(
+            'upload_path' => APPPATH . 'uploads/',
+            'allowed_types' => 'csv',
+            'overwrite' => TRUE,
+            'max_size' => '2048',
+            'max_width' => '1024',
+            'max_height' => '768'
+        );
+
+        $this->load->library('upload', $config);
+        if ( !$this->upload->do_upload('upload_loadsheet') ) {
+            $data['error'] = $this->upload->display_errors();
+            $this->load->view('tarantool_upload', $data);
+        } else {
+
+
+            $fileInfo = $this->upload->data();
+            $fileFullPath = $fileInfo['full_path'];
+
+            $csv = new parseCSV($fileFullPath);
+
+            $data['upload_data'] = $csv->data;
+            $this->load->view('tarantool_upload', $data);
+        }
+
+
+
+    }
+
+    /*public function readcsv()
+    {
+        $this->load->model('tarantool_model');
+        $this->load->library('csvreader');
+
+        $data['header'] = $this->tarantool_model->tes
+}
